@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Override
+	//security 폼 로그인 없애기
 	  protected void configure(HttpSecurity httpSecurity) throws Exception {
 	    httpSecurity.httpBasic().disable();
 	  }
