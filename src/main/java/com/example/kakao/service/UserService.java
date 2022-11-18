@@ -37,6 +37,8 @@ public class UserService {
         params.add("grant_type", "authorization_code");
         params.add("client_id", "3c8d9c8e6dd1bf79592090741a01a5ac");
         params.add("redirect_uri", "http://localhost:8080/login");
+        /*params.add("client_id", "6d14dc79fabe2059d567d923273f3225");
+        params.add("redirect_uri", "https://cozyinfo.vercel.app/main");*/
         params.add("code", code);
         //params.add("client_secret", "{시크릿 키}"); // 생략 가능!
 

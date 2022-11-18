@@ -11,6 +11,7 @@ import com.example.kakao.model.User;
 import com.example.kakao.model.oauth.OauthToken;
 import com.example.kakao.service.UserService;
 
+//https://kauth.kakao.com/oauth/authorize?client_id=3c8d9c8e6dd1bf79592090741a01a5ac&redirect_uri=http://localhost:8080/login&response_type=code
 @RestController
 @CrossOrigin(origins="http://localhost:3000",allowCredentials = "true")
 public class UserController {
@@ -20,7 +21,7 @@ public class UserController {
 
     // 프론트에서 인가코드 받아오는 url
 	@GetMapping("/login") // (3)
-	public User getLogin(@RequestParam(value="code",required=false) String code) { //(4)
+	public OauthToken getLogin(@RequestParam(value="code",required=false) String code) { //(4)
 		
        // 넘어온 인가 코드를 통해 access_token 발급 //(5)
        OauthToken oauthToken = userService.getAccessToken(code);
@@ -29,6 +30,7 @@ public class UserController {
        User User = userService.saveUser(oauthToken.getAccess_token());
        
        System.out.println("인가코드 : "+code);
-       return User;
+       System.out.println("액세스토큰 : "+oauthToken.getAccess_token());
+       return oauthToken;
    }
 }
